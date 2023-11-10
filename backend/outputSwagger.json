@@ -1,0 +1,648 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FIPPFLIX ",
+    "description": "API do trabalho de PFS2",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/"
+    }
+  ],
+  "paths": {
+    "/categoria/listar": {
+      "get": {
+        "tags": [
+          "Categoria"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/categoria/obter/{catId}": {
+      "get": {
+        "tags": [
+          "Categoria"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "catId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/categoria/criar": {
+      "post": {
+        "tags": [
+          "Categoria"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/categoria"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categoria/alterar": {
+      "put": {
+        "tags": [
+          "Categoria"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/categoria"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categoria/excluir/{catId}": {
+      "delete": {
+        "tags": [
+          "Categoria"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "catId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "codigo",
+            "description": "Codigo da categoria a ser excluida",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/conteudo/obter/{conId}": {
+      "get": {
+        "tags": [
+          "Conteudo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "conId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/conteudo/listar": {
+      "get": {
+        "tags": [
+          "Conteudo"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/conteudo/criar": {
+      "post": {
+        "tags": [
+          "Conteudo"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/conteudo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/conteudo/alterar": {
+      "put": {
+        "tags": [
+          "Conteudo"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/conteudo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/conteudo/excluir/{conId}": {
+      "delete": {
+        "tags": [
+          "Conteudo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "conId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "codigo",
+            "description": "Codigo do conteudo a ser excluido",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/perfil/listar": {
+      "get": {
+        "tags": [
+          "Perfil"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/perfil/criar": {
+      "post": {
+        "tags": [
+          "Perfil"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/perfil"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/perfil/alterar": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/perfil/excluir": {
+      "delete": {
+        "tags": [
+          "Perfil"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "codigo",
+            "description": "Codigo do perfil a ser excluido",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/plano/listar": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/plano/criar": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/plano/alterar": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/plano/excluir": {
+      "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/usuario/listar": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/usuario/criar": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuario"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/alterar": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/usuario/excluir": {
+      "delete": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "codigo",
+            "description": "Codigo do usuario a ser excluido",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/favoritos/listar": {
+      "get": {
+        "tags": [
+          "UsuLista"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
+    "/favoritos/criar": {
+      "post": {
+        "tags": [
+          "UsuLista"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuLista"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favoritos/alterar": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/favoritos/excluir": {
+      "delete": {
+        "tags": [
+          "UsuLista"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "codigo",
+            "description": "Codigo do favorito a ser excluido",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "usuario": {
+        "type": "object",
+        "properties": {
+          "usuId": {
+            "type": "number",
+            "example": 501
+          },
+          "usuEmail": {
+            "type": "string",
+            "example": "teste@teste.com"
+          },
+          "usuSenha": {
+            "type": "string",
+            "example": "123"
+          },
+          "usuNome": {
+            "type": "string",
+            "example": "Teste da silva"
+          },
+          "usuDataCad": {
+            "type": "string",
+            "example": ""
+          },
+          "perfilId": {
+            "type": "number",
+            "example": 1
+          }
+        }
+      },
+      "categoria": {
+        "type": "object",
+        "properties": {}
+      },
+      "conteudo": {
+        "type": "object",
+        "properties": {}
+      },
+      "perfil": {
+        "type": "object",
+        "properties": {}
+      },
+      "listaUss": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "chaveapi",
+        "description": "Chave de autorização da API"
+      }
+    }
+  }
+}
