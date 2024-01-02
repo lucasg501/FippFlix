@@ -1,4 +1,5 @@
-const UsuListaModel = require ('../model/usuListaModel');
+const conteudoModel = require('../model/conteudoModel');
+const UsuListaModel = require('../model/usuListaModel');
 
 class usuListaController{
     gravar(req,res){
@@ -37,14 +38,25 @@ class usuListaController{
         }
     }
 
-    async listar(req,res){
-        let usuListaModel = new UsuListaModel();
-        let lista = await usuListaModel.listar();
-        let listaRetorno = [];
-        for(let i=0; i<lista.length; i++){
-            listaRetorno.push(lista[i].toJSON());
+
+    async listar(req, res) {
+        if (req.params.usuId != null) {
+            let conteudo = new conteudoModel();
+            let lista = await conteudo.listarFavoritos(req.params.usuId);
+            let listaRetorno = [];
+    
+            lista.forEach(function (value, index) {
+                if (value instanceof conteudoModel) {
+                    listaRetorno.push(value.toJSON());
+                } else {
+                    listaRetorno.push(value);
+                }
+            })
+    
+            res.status(200).json({ lista: listaRetorno });
+        } else {
+            res.status(400).json({ msg: "Parâmetros inválidos" });
         }
-        return listaRetorno;
     }
 
     async excluir(req,res){

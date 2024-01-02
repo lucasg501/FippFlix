@@ -1,4 +1,3 @@
-const conteudoModel = require('../model/conteudoModel');
 const ConteudoModel = require('../model/conteudoModel');
 
 class ConteudoController{

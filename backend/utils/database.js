@@ -16,6 +16,42 @@ class Database {
         });
     }
 
+    IniciarTransacao() {
+        var cnn = this.#conexao;
+        return new Promise(function(res, rej) {
+            cnn.query("START TRANSACTION", function (error, results, fields) {
+                if (error) 
+                    rej(error);
+                else 
+                    res(results);
+            });
+        })
+    }
+
+    Rollback() {
+        var cnn = this.#conexao;
+        return new Promise(function(res, rej) {
+            cnn.query("ROLLBACK", function (error, results, fields) {
+                if (error) 
+                    rej(error);
+                else 
+                    res(results);
+            });
+        })
+    }
+
+    Commit() {
+        var cnn = this.#conexao;
+        return new Promise(function(res, rej) {
+            cnn.query("COMMIT", function (error, results, fields) {
+                if (error) 
+                    rej(error);
+                else 
+                    res(results);
+            });
+        })
+    }
+
     ExecutaComando(sql, valores) {
         var cnn = this.#conexao;
         return new Promise(function(res, rej) {

@@ -27,7 +27,7 @@ class CategoriaController{
             let ok = categoriaModel.gravar();
 
             if(ok)
-                res.status(200).json({msg: "Categoria adicionada!"})
+                res.status(200).json({msg: "Categoria alterada!"})
             else
                 res.status(500).json({msg: "Erro ao gravar categoria"})
         }else{

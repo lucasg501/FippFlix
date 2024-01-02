@@ -24,7 +24,7 @@ export default function AlterarConteudo({params: {conId}}){
 
     return(
         <div>
-            <ConteudoForm conteudo={conteudo}></ConteudoForm>
+            {conteudo != null ? <ConteudoForm conteudo={conteudo}></ConteudoForm> : <div>Carregando...</div>}
         </div>
     )
 }

@@ -7,7 +7,7 @@ const router = express.Router();
 let auth = new Autorizacao();
 let ctrl = new UsuListaController();
 
-router.get('/listar', auth.validarToken, (req,res) => {
+router.get('/listar/:usuId', auth.validarToken, (req,res) => {
     // #swagger.tags = ['UsuLista']
     /* #swagger.security = [{
             "apiKeyAuth": ['FIPPFLIX501']

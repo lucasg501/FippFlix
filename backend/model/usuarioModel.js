@@ -16,7 +16,8 @@ class UsuarioModel{
     get usuSenha(){return this.#usuSenha;} set usuSenha(usuSenha){this.#usuSenha = usuSenha;}
     get usuNome(){return this.#usuNome;} set usuNome(usuNome){this.#usuNome = usuNome;}
     get usuDataCad(){return this.#usuDataCad;} set usuDataCad(usuDataCad){this.#usuDataCad = usuDataCad;}
-    get perfilId(){return this.#perfilId;} set perfilId(perfilId){this.#perfilId = perfilId;}
+    get perfilId(){return this.#perfilId} set perfilId(perfilId){this.#perfilId = perfilId}
+    
 
     constructor(usuId, usuEmail, usuSenha, usuNome, usuDataCad, perfilId){
         this.#usuId = usuId;
@@ -29,19 +30,34 @@ class UsuarioModel{
 
     toJSON(){
         return{
-            'usuId' : this.#usuId,
-            'usuEmail' : this.#usuEmail,
-            'usuSenha' : this.#usuSenha,
-            'usuNome' : this.#usuNome,
-            'usuDataCad' : this.#usuDataCad,
-            'perfilId' : this.#perfilId,
+            "usuId" : this.#usuId,
+            "usuEmail" : this.#usuEmail,
+            "usuSenha" : this.#usuSenha,
+            "usuNome" : this.#usuNome,
+            "usuDataCad" : this.#usuDataCad,
+            "perfilId" : this.#perfilId,
+            
         }
     }
 
     async gravar(){
         if(this.#usuId == 0){
-            let sql = 'insert into tb_usuario (usu_email, usu_senha, usu_nome, usu_datacadastro, per_id) values (?,?,?,now(),?)';
+            let sql = 'insert into tb_usuario (usu_email, usu_senha, usu_nome, usu_datacadastro, per_id) values (?,?,?,now(), ?)';
             let valores = [this.#usuEmail, this.#usuSenha, this.#usuNome, this.#usuDataCad, this.#perfilId];
+            let ok = await banco.ExecutaComandoNonQuery(sql,valores);
+            return ok;
+
+        }else{
+            let sql = 'update tb_usuario set usu_email = ?, usu_senha = ?, usu_nome = ?, usu_datacadastro = ?, per_id = ? where usu_id = ?';
+            let valores = [this.#usuEmail, this.#usuSenha, this.#usuNome, this.#usuDataCad, this.#perfilId, this.#usuId];
+            let ok = await banco.ExecutaComandoNonQuery(sql,valores);
+            return ok;
+        }
+    }
+    async gravarCliente(){
+        if(this.#usuId == 0){
+            let sql = 'insert into tb_usuario (usu_email, usu_senha, usu_nome, usu_datacadastro, per_id) values (?,?,?,now(), 2)';
+            let valores = [this.#usuEmail, this.#usuSenha, this.#usuNome, this.#usuDataCad,];
             let ok = await banco.ExecutaComandoNonQuery(sql,valores);
             return ok;
 
@@ -85,7 +101,18 @@ class UsuarioModel{
     }
 
     async autenticar(usuEmail, usuSenha){
-        
+        let sql = "select * from tb_usuario where usu_email = ? and usu_senha = ?";
+
+        let valores = [usuEmail, usuSenha];
+
+        let rows = await banco.ExecutaComando(sql, valores);
+
+        if(rows.length > 0) {
+            return new UsuarioModel(rows[0]["usu_id"],
+            rows[0]["usu_nome"], rows[0]["usu_email"], rows[0]["per_id"], rows[0]["usu_datacadastro"])
+        }
+
+        return null;
     }
 
 }

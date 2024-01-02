@@ -23,7 +23,7 @@ export default function AlterarCategoria({params: {catId}}){
 
     return(
         <div>
-            <CategoriaForm></CategoriaForm>
+            {categoria != null ? <CategoriaForm categoria={categoria}></CategoriaForm> : <div>Carregando...</div>}
         </div>
     )
 }

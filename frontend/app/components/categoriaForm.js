@@ -36,7 +36,7 @@ export default function CategoriaForm(props){
         let status = 0;
         if(catDescricao.current.value != ""){
             httpClient.put('/categoria/alterar',{
-                catId: catId,
+                catId: categoria.catId,
                 catDescricao: catDescricao.current.value
             })
             .then(r=>{
@@ -66,7 +66,7 @@ export default function CategoriaForm(props){
                 </div>
 
                 <div>
-                    <button onClick={categoria.catId != 0 ? alterarCategoria : cadastrarCategoria} style={{marginRight: 5}} className="btn btn-primary">{categoria.catId != 0 ? "alterar" : "Cadastrar"}</button>
+                    <button onClick={categoria.catId != 0 ? alterarCategoria : cadastrarCategoria} style={{marginRight: 5}} className="btn btn-primary">{categoria.catId != 0 ? "Alterar" : "Cadastrar"}</button>
 
                     <a href="/admin/categoria">
                     <button style={{marginRight: 5}} className="btn btn-secondary">Voltar</button>

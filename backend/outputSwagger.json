@@ -153,6 +153,36 @@
         "security": []
       }
     },
+    "/busca/listar/{buscaDescricao}": {
+      "get": {
+        "tags": [
+          "BuscaLista"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "buscaDescricao",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "FIPPFLIX501"
+            ]
+          }
+        ]
+      }
+    },
     "/conteudo/obter/{conId}": {
       "get": {
         "tags": [
@@ -379,6 +409,16 @@
         "security": []
       }
     },
+    "/cliente/criar": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/plano/listar": {
       "get": {
         "description": "",
@@ -411,6 +451,29 @@
     },
     "/plano/excluir": {
       "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login/logout": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login/autenticar": {
+      "post": {
         "description": "",
         "responses": {
           "default": {
@@ -503,12 +566,22 @@
         "security": []
       }
     },
-    "/favoritos/listar": {
+    "/favoritos/listar/{usuId}": {
       "get": {
         "tags": [
           "UsuLista"
         ],
         "description": "",
+        "parameters": [
+          {
+            "name": "usuId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -585,6 +658,63 @@
           }
         },
         "security": []
+      }
+    },
+    "/pagamento/checkout/": {
+      "post": {
+        "tags": [
+          "Pagamento"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/pagamento/listar": {
+      "get": {
+        "tags": [
+          "Pagamento"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/pagamento/pagar/{planoId}/{usuarioId}": {
+      "post": {
+        "tags": [
+          "Pagamento"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "planoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     }
   },

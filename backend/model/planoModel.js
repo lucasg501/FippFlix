@@ -53,6 +53,19 @@ class planoModel{
         let ok = await banco.ExecutaComandoNonQuery(sql, valores);
         return ok;
     }
+
+    async obterPlano(planoId){
+        let sql = 'select * from tb_plano where pla_id = ?';
+        let valores = [planoId];
+        let rows = await banco.ExecutaComando(sql, valores);
+
+        if(rows.length > 0){
+            let row = rows[0];
+            let plano = new planoModel(row['pla_id'], row['pla_nome'], row['pla_descricao'], row['pla_valor']);
+            return plano;
+        }
+        return null;
+    }
 }
 
 module.exports = planoModel;

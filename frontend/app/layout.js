@@ -4,6 +4,7 @@ import '../public/template/css/styles.css'
 import '../public/template/css/fontawesome-free/css/all.min.css'
 import '../public/template/css/styles.css'
 import '../public/template/css/sb-admin-2.min.css'
+import { UserProvider } from './context/userContext'
 const nunito = Nunito({ subsets: ['latin'] })
 
 export const metadata = {
@@ -13,7 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <UserProvider>
+      <html lang="en">
         <body className={nunito.className}>
             {children}
             <script src="/template/js/jquery.min.js"></script>
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
         
         </body>
     
-    </html>
+      </html>
+      </UserProvider>
   )
 }

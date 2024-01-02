@@ -1,3 +1,4 @@
+const { error } = require('console');
 const Database = require ('../utils/database')
 
 const banco = new Database();
@@ -7,6 +8,7 @@ class usuListaModel{
     #usuListaId;
     #usuarioId;
     #conteudoId;
+
 
     get usuListaId(){ return this.#usuListaId;} set usuListaId(usuListaId){this.#usuListaId = usuListaId;}
     get usuarioId(){ return this.#usuarioId;} set usuarioId(usuarioId){this.#usuarioId = usuarioId;}
@@ -22,7 +24,7 @@ class usuListaModel{
         return{
             'usuListaId' : this.#usuListaId,
             'usuarioId' : this.#usuarioId,
-            'conteudoId' : this.#conteudoId
+            'conteudoId' : this.#conteudoId,
         }
     }
 
@@ -33,15 +35,7 @@ class usuListaModel{
         return ok;
     }
 
-    async listar(){
-        let sql = 'select * from tb_usuariolista';
-        let rows = await banco.ExecutaComando(sql);
-        let lista = [];
-        for(let i=0; i<rows.length; i++){
-            lista.push(new usuListaModel(rows[i]['usl_id'], rows[i]['usu_id'], rows[i]['con_id']));
-        }
-        return lista;
-    }
+    
 
     async excluir(usuListaId){
         let sql = 'delete from tb_usuariolista';
